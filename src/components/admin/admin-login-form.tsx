@@ -7,11 +7,12 @@ import { Button } from "@/components/ui/button";
 
 interface AdminLoginFormProps {
   supabaseReady: boolean;
+  configHint?: string | null;
 }
 
 const initialState: LoginState = {};
 
-export function AdminLoginForm({ supabaseReady }: AdminLoginFormProps) {
+export function AdminLoginForm({ supabaseReady, configHint }: AdminLoginFormProps) {
   const [state, formAction, pending] = useActionState(adminLoginAction, initialState);
   const searchParams = useSearchParams();
   const urlError = searchParams.get("error");
@@ -36,9 +37,13 @@ export function AdminLoginForm({ supabaseReady }: AdminLoginFormProps) {
 
         {!supabaseReady && (
           <p className="mt-4 rounded-lg bg-amber-50 p-3 text-center text-sm text-amber-900 dark:bg-amber-950 dark:text-amber-200">
-            Supabase não detectado no servidor. Crie{" "}
-            <code className="text-xs">.env.local</code> com URL e chave, depois reinicie{" "}
-            <code className="text-xs">npm run dev</code>.
+            {configHint ?? (
+              <>
+                Supabase não configurado. Em produção (Vercel): Settings → Environment
+                Variables. Local: arquivo <code className="text-xs">.env.local</code> e{" "}
+                <code className="text-xs">npm run dev</code>.
+              </>
+            )}
           </p>
         )}
 

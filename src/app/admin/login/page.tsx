@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import { AdminLoginForm } from "@/components/admin/admin-login-form";
-import { isSupabaseConfigured } from "@/lib/supabase/env";
+import { getSupabaseConfigHint, isSupabaseConfigured } from "@/lib/supabase/env";
 
 export default function AdminLoginPage() {
   const supabaseReady = isSupabaseConfigured();
+  const configHint = getSupabaseConfigHint();
 
   return (
     <Suspense
@@ -11,7 +12,7 @@ export default function AdminLoginPage() {
         <div className="flex min-h-screen items-center justify-center">Carregando…</div>
       }
     >
-      <AdminLoginForm supabaseReady={supabaseReady} />
+      <AdminLoginForm supabaseReady={supabaseReady} configHint={configHint} />
     </Suspense>
   );
 }

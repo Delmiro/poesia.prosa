@@ -44,6 +44,13 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_SITE_NAME=Prosa & Poesia
 ```
 
+**Na Vercel (produção):** Settings → Environment Variables — mesmo conteúdo, **sem aspas** no valor.
+
+Exemplo correto da URL:
+`https://qzedlqjlaarpoctdqmdm.supabase.co`
+
+Errado: `qzedlqjlaarpoctdqmdm.supabase.co` (sem https), `"https://..."` (com aspas), ou só o ID do projeto.
+
 Reinicie o servidor após salvar:
 
 ```bash
