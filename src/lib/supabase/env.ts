@@ -1,4 +1,4 @@
-/** Lê variáveis Supabase (servidor e build). Suporta chave anon ou publishable. */
+/** Lê variáveis Supabase. Suporta chave anon (JWT) ou publishable (sb_publishable_...). */
 export function getSupabaseEnv() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() ?? "";
   const key =
