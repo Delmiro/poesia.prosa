@@ -39,8 +39,9 @@ export const demoQuote: QuoteOfDay = {
 export const demoBanners: Banner[] = [
   {
     id: "1",
-    title: "Destaques da Semana",
-    subtitle: "As melhores leituras literárias para inspirar sua alma",
+    title: "Bem-vindo ao mundo da palavra",
+    subtitle:
+      "Poesia, prosa e cultura reunidas em um portal dedicado à literatura com alma e sensibilidade.",
     image_url: null,
     link_url: "/categoria/poesia",
     banner_type: "hero",

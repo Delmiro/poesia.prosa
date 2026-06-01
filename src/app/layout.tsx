@@ -1,7 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Lora, Playfair_Display } from "next/font/google";
+import { Inter, Lora, Playfair_Display } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import "./globals.css";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const lora = Lora({
   variable: "--font-lora",
@@ -51,7 +57,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf8f5" },
+    { media: "(prefers-color-scheme: light)", color: "#faf7f2" },
     { media: "(prefers-color-scheme: dark)", color: "#1a1612" },
   ],
 };
@@ -62,8 +68,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning className={`${lora.variable} ${playfair.variable}`}>
-      <body className="min-h-screen antialiased font-serif">
+    <html
+      lang="pt-BR"
+      suppressHydrationWarning
+      className={`${inter.variable} ${lora.variable} ${playfair.variable}`}
+    >
+      <body className="min-h-screen antialiased font-sans">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

@@ -26,17 +26,17 @@ export function SectionBlock({
       : "grid gap-6 sm:grid-cols-2 lg:grid-cols-3";
 
   return (
-    <section className="px-4 py-14 md:px-6">
+    <section className="px-4 py-16 md:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <h2 className="font-display text-3xl font-semibold">{title}</h2>
-            {subtitle && <p className="mt-2 text-muted">{subtitle}</p>}
-          </div>
+        <div className="mb-12 text-center">
+          <h2 className="font-display text-3xl font-semibold md:text-4xl">{title}</h2>
+          {subtitle && (
+            <p className="mx-auto mt-4 max-w-2xl text-muted">{subtitle}</p>
+          )}
           {viewAllHref && (
             <Link
               href={viewAllHref}
-              className="flex items-center gap-1 text-sm text-accent transition-opacity hover:opacity-80"
+              className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-accent transition-opacity hover:opacity-80"
             >
               Ver todos <ArrowRight className="h-4 w-4" />
             </Link>
@@ -44,7 +44,7 @@ export function SectionBlock({
         </div>
         <div className={gridClass}>
           {items.map((item, i) => (
-            <PublicationCard key={item.id} item={item} index={i} />
+            <PublicationCard key={item.id} item={item} index={i} variant="editorial" />
           ))}
         </div>
       </div>

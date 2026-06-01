@@ -41,8 +41,8 @@ export default async function HomePage() {
 
   const heroBanner = banners[0] ?? {
     id: "default",
-    title: "Prosa & Poesia",
-    subtitle: "Onde as palavras encontram a alma",
+    title: "Bem-vindo ao mundo da palavra",
+    subtitle: "Poesia, prosa e cultura reunidas em um portal dedicado à literatura com alma.",
     banner_type: "hero",
     sort_order: 0,
     is_active: true,

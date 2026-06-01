@@ -10,10 +10,16 @@ import { CONTENT_LABELS, type PublicationCard as PubCard } from "@/types";
 interface PublicationCardProps {
   item: PubCard;
   index?: number;
+  variant?: "default" | "editorial";
 }
 
-export function PublicationCard({ item, index = 0 }: PublicationCardProps) {
+export function PublicationCard({
+  item,
+  index = 0,
+  variant = "default",
+}: PublicationCardProps) {
   const href = `/leitura/${item.type}/${item.slug}`;
+  const isEditorial = variant === "editorial";
 
   return (
     <motion.article
@@ -21,10 +27,18 @@ export function PublicationCard({ item, index = 0 }: PublicationCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.08, duration: 0.5 }}
-      className="card-hover group overflow-hidden rounded-2xl border border-border bg-card"
+      className={`card-hover group overflow-hidden bg-card ${
+        isEditorial
+          ? "rounded-3xl border-0 shadow-sm"
+          : "rounded-3xl border border-border"
+      }`}
     >
       <Link href={href} className="block">
-        <div className="relative aspect-[16/10] overflow-hidden bg-border/30">
+        <div
+          className={`relative overflow-hidden bg-border/30 ${
+            isEditorial ? "aspect-[3/4]" : "aspect-[16/10]"
+          }`}
+        >
           {item.cover_image_url ? (
             <Image
               src={item.cover_image_url}
@@ -34,26 +48,26 @@ export function PublicationCard({ item, index = 0 }: PublicationCardProps) {
               sizes="(max-width: 768px) 100vw, 33vw"
             />
           ) : (
-            <div className="flex h-full items-center justify-center bg-gradient-to-br from-accent-soft/20 to-accent/10">
-              <span className="font-display text-4xl text-accent/40">
+            <div className="flex h-full items-center justify-center bg-gradient-to-br from-accent-soft/40 to-accent/15">
+              <span className="font-display text-5xl text-accent/35">
                 {item.title.charAt(0)}
               </span>
             </div>
           )}
-          <span className="absolute left-3 top-3 rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-accent backdrop-blur-sm">
+          <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
             {CONTENT_LABELS[item.type]}
           </span>
         </div>
 
-        <div className="p-5">
+        <div className={isEditorial ? "p-5 pt-4" : "p-5"}>
           <h3 className="font-display text-lg font-semibold leading-snug transition-colors group-hover:text-accent">
             {item.title}
           </h3>
           <p className="mt-1 text-sm text-muted">{item.author_name}</p>
-          {item.excerpt && (
+          {!isEditorial && item.excerpt && (
             <p className="mt-3 line-clamp-2 text-sm text-muted">{item.excerpt}</p>
           )}
-          <div className="mt-4 flex items-center justify-between text-xs text-muted">
+          <div className="mt-3 flex items-center justify-between text-xs text-muted">
             <span>{formatDate(item.published_at)}</span>
             <div className="flex gap-3">
               <span className="flex items-center gap-1">

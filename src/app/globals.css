@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #faf8f5;
-  --foreground: #2c2419;
-  --muted: #6b5d4f;
-  --accent: #8b4513;
-  --accent-soft: #c4a574;
+  --background: #faf7f2;
+  --foreground: #1a1a1a;
+  --muted: #555555;
+  --accent: #8b7355;
+  --accent-soft: #d6c9b6;
+  --accent-cta: #d6c9b6;
   --card: #ffffff;
-  --border: #e8e0d5;
-  --hero-overlay: rgba(44, 36, 25, 0.45);
+  --border: #e9ddcf;
+  --footer: #e9ddcf;
+  --hero-overlay: rgba(26, 26, 26, 0.38);
 }
 
 .dark {
@@ -28,10 +30,13 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-cta: var(--accent-cta);
   --color-card: var(--card);
   --color-border: var(--border);
+  --color-footer: var(--footer);
   --font-serif: var(--font-lora), Georgia, serif;
   --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
 * {
@@ -45,9 +50,18 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-lora), Georgia, serif;
-  line-height: 1.7;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.65;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.font-serif,
+.prose-literary {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
+.font-display {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
 }
 
 ::selection {
